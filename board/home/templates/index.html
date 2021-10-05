@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+<div align="center">
+    <a href="{{ url_for('auth.logout') }}">Выйти</a>
+</div>
+{% else %}
+<div align="center">
+    <a href="{{ url_for('auth.register') }}">Зарегистрироваться</a>
+    <a href="{{ url_for('auth.login') }}">Войти</a>
+</div>
+
+{% endif %}
+{% endblock %}

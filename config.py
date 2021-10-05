@@ -7,6 +7,7 @@ class Config:
 
 
 class DevelopmentConfig(Config):
+    APP = config('FLASK_APP')
     DEBUG = config('FLASK_DEBUG')
     ENV = config('FLASK_ENV')
     SQLALCHEMY_TRACK_MODIFICATIONS = True

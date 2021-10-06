@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content">
+    <h1 style="text-align: center">Редактировать продукт</h1>
+
+    <div class="form" align="center">
+        <form action="/update_product/{{product.id}}" method="POST">
+            <input type="text" name="name" id="name" value="{{product.name}}">
+            <input type="text" name="price" id="price" value="{{product.price}}">
+            <input type="submit" value="Обновить">
+        </form>
+    </div>
+</div>
+{% endblock %}

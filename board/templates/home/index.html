@@ -4,12 +4,14 @@
 {% if current_user.is_authenticated %}
 <div align="center">
     <a href="{{ url_for('auth.logout') }}">Выйти</a>
+    <a href="{{ url_for('index_bp.add_product') }}">Добавить товар</a>
 </div>
 {% else %}
 <div align="center">
     <a href="{{ url_for('auth.register') }}">Зарегистрироваться</a>
     <a href="{{ url_for('auth.login') }}">Войти</a>
 </div>
+{% endif %}
 
 <h2 align="center">Товары:</h2>
 
@@ -18,10 +20,14 @@
     <div align="center">
         {{ product.name }}
         {{ product.price }}
+        {% if product.user_id == current_user.id %}
+            <a href="/update_product/{{ product.id }}">Редактировать</a>
+            <a href="/delete_product/{{ product.id }}">Удалить</a>
+        {% else %}
+
+        {% endif %}
     </div>
 
     {% endfor %}
 </div>
-
-{% endif %}
 {% endblock %}

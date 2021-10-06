@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask_login import UserMixin
 from . import login_manager, db
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -28,3 +30,15 @@ class User(db.Model, UserMixin):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+
+class Product(db.Model):
+    __tablename__ = 'products'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    price = db.Column(db.Numeric(10, 2))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    is_archive = db.Column(db.Boolean, default=False)
+
+    def __repr__(self):
+        return '<Item %r>' % self.name

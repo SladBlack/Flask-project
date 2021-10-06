@@ -11,5 +11,17 @@
     <a href="{{ url_for('auth.login') }}">Войти</a>
 </div>
 
+<h2 align="center">Товары:</h2>
+
+<div align="center">
+    {% for product in products %}
+    <div align="center">
+        {{ product.name }}
+        {{ product.price }}
+    </div>
+
+    {% endfor %}
+</div>
+
 {% endif %}
 {% endblock %}
